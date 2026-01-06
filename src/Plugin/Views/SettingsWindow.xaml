@@ -1,0 +1,183 @@
+<Window x:Class="TSqlFormatter.Extension.Views.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:converters="clr-namespace:TSqlFormatter.Extension.Converters"
+        xmlns:core="clr-namespace:TSqlFormatter.Core;assembly=TSqlFormatter.Core"
+        Title="T-SQL Formatter Settings"
+        Height="700" Width="900"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResizeWithGrip">
+
+    <Window.Resources>
+        <converters:EnumBooleanConverter x:Key="EnumBooleanConverter"/>
+        <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+
+        <Style x:Key="GroupBoxStyle" TargetType="GroupBox">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="10"/>
+        </Style>
+
+        <Style x:Key="SettingRowStyle" TargetType="StackPanel">
+            <Setter Property="Margin" Value="0,5"/>
+        </Style>
+
+        <Style x:Key="LabelStyle" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,0,10,0"/>
+            <Setter Property="Width" Value="150"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Left Column: Settings -->
+            <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <!-- Preset Selection -->
+                    <GroupBox Header="Preset" Style="{StaticResource GroupBoxStyle}">
+                        <StackPanel Orientation="Horizontal">
+                            <ComboBox ItemsSource="{Binding Presets}"
+                                      SelectedItem="{Binding SelectedPreset}"
+                                      Width="150" Margin="0,0,10,0"/>
+                            <Button Content="Apply Preset"
+                                    Command="{Binding ApplyPresetCommand}"
+                                    Padding="10,5"/>
+                            <Button Content="Reset to Default"
+                                    Command="{Binding ResetToDefaultCommand}"
+                                    Padding="10,5" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- Indentation Settings -->
+                    <GroupBox Header="Indentation" Style="{StaticResource GroupBoxStyle}">
+                        <StackPanel>
+                            <StackPanel Style="{StaticResource SettingRowStyle}">
+                                <RadioButton Content="Use Tabs"
+                                             IsChecked="{Binding UseTab}"
+                                             GroupName="Indent"/>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource SettingRowStyle}" Orientation="Horizontal">
+                                <RadioButton Content="Use Spaces"
+                                             IsChecked="{Binding UseTab, Converter={StaticResource InverseBooleanConverter}}"
+                                             GroupName="Indent"/>
+                                <TextBlock Text="Width:" Margin="20,0,5,0" VerticalAlignment="Center"/>
+                                <ComboBox SelectedItem="{Binding IndentSize}" Width="60"
+                                          IsEnabled="{Binding UseTab, Converter={StaticResource InverseBooleanConverter}}">
+                                    <ComboBox.Items>
+                                        <sys:Int32 xmlns:sys="clr-namespace:System;assembly=mscorlib">2</sys:Int32>
+                                        <sys:Int32 xmlns:sys="clr-namespace:System;assembly=mscorlib">4</sys:Int32>
+                                        <sys:Int32 xmlns:sys="clr-namespace:System;assembly=mscorlib">8</sys:Int32>
+                                    </ComboBox.Items>
+                                </ComboBox>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- Keyword Casing -->
+                    <GroupBox Header="Keyword Casing" Style="{StaticResource GroupBoxStyle}">
+                        <StackPanel>
+                            <RadioButton Content="UPPERCASE"
+                                         IsChecked="{Binding KeywordCasing, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=Uppercase}"
+                                         GroupName="KeywordCasing" Margin="0,2"/>
+                            <RadioButton Content="lowercase"
+                                         IsChecked="{Binding KeywordCasing, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=Lowercase}"
+                                         GroupName="KeywordCasing" Margin="0,2"/>
+                            <RadioButton Content="PascalCase"
+                                         IsChecked="{Binding KeywordCasing, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=PascalCase}"
+                                         GroupName="KeywordCasing" Margin="0,2"/>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- Comma Placement -->
+                    <GroupBox Header="Comma Placement" Style="{StaticResource GroupBoxStyle}">
+                        <StackPanel>
+                            <RadioButton Content="Before column (, column)"
+                                         IsChecked="{Binding CommaPlacement, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=BeforeColumn}"
+                                         GroupName="CommaPlacement" Margin="0,2"/>
+                            <RadioButton Content="After column (column,)"
+                                         IsChecked="{Binding CommaPlacement, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=AfterColumn}"
+                                         GroupName="CommaPlacement" Margin="0,2"/>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- Formatting Options -->
+                    <GroupBox Header="Formatting Options" Style="{StaticResource GroupBoxStyle}">
+                        <StackPanel>
+                            <CheckBox Content="Add spaces around operators (=, &lt;&gt;, AND, OR)"
+                                      IsChecked="{Binding SpaceAroundOperators}" Margin="0,5"/>
+                            <CheckBox Content="Force AS keyword for aliases"
+                                      IsChecked="{Binding ForceAsKeyword}" Margin="0,5"/>
+                            <CheckBox Content="New line per clause (SELECT, FROM, WHERE)"
+                                      IsChecked="{Binding NewLinePerClause}" Margin="0,5"/>
+                            <CheckBox Content="Place JOINs on separate lines"
+                                      IsChecked="{Binding JoinOnSeparateLine}" Margin="0,5"/>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- Application Settings -->
+                    <GroupBox Header="Application" Style="{StaticResource GroupBoxStyle}">
+                        <StackPanel>
+                            <StackPanel Style="{StaticResource SettingRowStyle}" Orientation="Horizontal">
+                                <TextBlock Text="Shortcut Key:" Style="{StaticResource LabelStyle}"/>
+                                <TextBox Text="{Binding ShortcutKey}" Width="100"/>
+                            </StackPanel>
+                            <CheckBox Content="Apply to selection only (when text is selected)"
+                                      IsChecked="{Binding ApplyToSelection}" Margin="0,10,0,0"/>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+            </ScrollViewer>
+
+            <!-- Right Column: Preview -->
+            <GroupBox Grid.Column="1" Header="Preview" Style="{StaticResource GroupBoxStyle}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="Input SQL:" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <TextBox Grid.Row="1"
+                             Text="{Binding PreviewInput, UpdateSourceTrigger=PropertyChanged}"
+                             AcceptsReturn="True"
+                             AcceptsTab="True"
+                             TextWrapping="Wrap"
+                             VerticalScrollBarVisibility="Auto"
+                             FontFamily="Consolas"
+                             FontSize="12"/>
+
+                    <TextBlock Grid.Row="2" Text="Formatted Output:" FontWeight="Bold" Margin="0,10,0,5"/>
+                    <TextBox Grid.Row="3"
+                             Text="{Binding PreviewOutput, Mode=OneWay}"
+                             IsReadOnly="True"
+                             AcceptsReturn="True"
+                             TextWrapping="Wrap"
+                             VerticalScrollBarVisibility="Auto"
+                             FontFamily="Consolas"
+                             FontSize="12"
+                             Background="#F5F5F5"/>
+                </Grid>
+            </GroupBox>
+        </Grid>
+
+        <!-- Bottom: Buttons -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+            <Button Content="Save" Command="{Binding SaveCommand}"
+                    Width="80" Height="30" Margin="0,0,10,0"/>
+            <Button Content="Cancel" Command="{Binding CancelCommand}"
+                    Width="80" Height="30" IsCancel="True"/>
+        </StackPanel>
+    </Grid>
+</Window>

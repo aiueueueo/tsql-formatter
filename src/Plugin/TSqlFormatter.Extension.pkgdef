@@ -1,0 +1,24 @@
+[$RootKey$\Packages\{a1b2c3d4-e5f6-7890-abcd-ef1234567890}]
+@="TSqlFormatterPackage"
+"InprocServer32"="$WinDir$\SYSTEM32\MSCOREE.DLL"
+"Class"="TSqlFormatter.Extension.TSqlFormatterPackage"
+"CodeBase"="$PackageFolder$\TSqlFormatter.Extension.dll"
+"AllowsBackgroundLoad"=dword:00000001
+
+[$RootKey$\Packages\{a1b2c3d4-e5f6-7890-abcd-ef1234567890}\SatelliteDll]
+"DllName"="TSqlFormatter.Extension.resources.dll"
+"Path"="$PackageFolder$"
+
+[$RootKey$\InstalledProducts\TSqlFormatterPackage]
+@="#110"
+"Package"="{a1b2c3d4-e5f6-7890-abcd-ef1234567890}"
+"ProductDetails"="#112"
+"UseInterface"=dword:00000000
+
+; AutoLoad on ShellInitialized
+[$RootKey$\AutoLoadPackages\{e7e0be00-e2d2-11d0-9eef-00a0c91a46fc}]
+"{a1b2c3d4-e5f6-7890-abcd-ef1234567890}"=dword:00000002
+
+; AutoLoad on NoSolution
+[$RootKey$\AutoLoadPackages\{adfc4e64-0397-11d1-9f4e-00a0c911004f}]
+"{a1b2c3d4-e5f6-7890-abcd-ef1234567890}"=dword:00000002

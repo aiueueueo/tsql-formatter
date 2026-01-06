@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git init:*)",
+      "Bash(dotnet restore:*)",
+      "Bash(dotnet build:*)",
+      "Bash(dotnet test:*)",
+      "Bash(Get-ChildItem \"C:\\\\Users\\\\bmmee11266\\\\Development\\\\ssms-plugin\\\\ssms-formatter\" -Filter \"*.vsix\" -Recurse)",
+      "Bash(powershell -Command \"Get-ChildItem ''C:\\\\Users\\\\bmmee11266\\\\Development\\\\ssms-plugin\\\\ssms-formatter'' -Filter ''*.vsix'' -Recurse\")",
+      "Bash(powershell -Command \"Get-ChildItem ''C:\\\\Users\\\\bmmee11266\\\\Development\\\\ssms-plugin\\\\ssms-formatter\\\\src\\\\Plugin\\\\bin\\\\Release\\\\net48''\")",
+      "Bash(copy:*)",
+      "Bash(powershell -Command:*)",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"C:\\\\Users\\\\bmmee11266\\\\Development\\\\ssms-plugin\\\\ssms-formatter\\\\create-vsix.ps1\")",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"C:\\\\Users\\\\bmmee11266\\\\Development\\\\ssms-plugin\\\\ssms-formatter\\\\install-manual.ps1\")",
+      "WebFetch(domain:qiita.com)",
+      "Bash(dir \"C:\\\\Users\\\\koban\\\\projects\\\\tsql-formatter\\\\src\\\\Plugin\\\\bin\\\\Release\\\\net48\\\\*.pkgdef\")",
+      "WebSearch",
+      "Bash(dir \"%LocalAppData%\\\\Microsoft\")",
+      "Bash(findstr:*)",
+      "Bash(powershell.exe -NoProfile -Command \"dir $env:LocalAppData\\\\Microsoft | Where-Object {$_Name -match ''SSMS|SQL|Visual''}\")",
+      "Bash(powershell.exe -NoProfile -Command 'dir $env:LocalAppData\\\\Microsoft | Where-Object {$_.Name -match \"\"SSMS|SQL|Visual\"\"}')",
+      "Bash(powershell.exe -NoProfile -Command 'Get-ChildItem \"\"$env:LocalAppData\\\\Microsoft\\\\SSMS\"\" -Recurse -Directory | Select-Object FullName')",
+      "Bash(powershell.exe -NoProfile -Command '@\"\"\n<?xml version=\"\"1.0\"\" encoding=\"\"utf-8\"\"?>\n<PackageManifest Version=\"\"2.0.0\"\" xmlns=\"\"http://schemas.microsoft.com/developer/vsx-schema/2011\"\">\n  <Metadata>\n    <Identity Id=\"\"TSqlFormatter.Extension.a1b2c3d4-e5f6-7890-abcd-ef1234567890\"\" Version=\"\"1.0.0\"\" Language=\"\"en-US\"\" Publisher=\"\"T-SQL Formatter\"\" />\n    <DisplayName>T-SQL Formatter</DisplayName>\n    <Description>A SQL Server Management Studio extension for formatting T-SQL queries.</Description>\n  </Metadata>\n  <Installation AllUsers=\"\"true\"\">\n    <InstallationTarget Id=\"\"Microsoft.VisualStudio.Ssms\"\" Version=\"\"[17.0,\\)\"\" />\n  </Installation>\n  <Dependencies>\n    <Dependency Id=\"\"Microsoft.Framework.NDP\"\" DisplayName=\"\"Microsoft .NET Framework\"\" Version=\"\"[4.8,\\)\"\" />\n  </Dependencies>\n  <Assets>\n    <Asset Type=\"\"Microsoft.VisualStudio.VsPackage\"\" Path=\"\"TSqlFormatter.Extension.pkgdef\"\" />\n  </Assets>\n</PackageManifest>\n\"\"@ | Out-File -FilePath \"\"C:\\\\Program Files\\\\Microsoft SQL Server Management Studio 22\\\\Release\\\\Common7\\\\IDE\\\\Extensions\\\\TSqlFormatter\\\\extension.vsixmanifest\"\" -Encoding UTF8 -Force')",
+      "Bash(powershell.exe:*)"
+    ]
+  }
+}

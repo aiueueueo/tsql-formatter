@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+
+  <Commands package="guidTSqlFormatterPackage">
+
+    <Groups>
+      <!-- Group in Tools menu -->
+      <Group guid="guidTSqlFormatterPackageCmdSet" id="TSqlFormatterMenuGroup" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS"/>
+      </Group>
+    </Groups>
+
+    <Buttons>
+      <!-- Format SQL Command -->
+      <Button guid="guidTSqlFormatterPackageCmdSet" id="FormatSqlCommandId" priority="0x0100" type="Button">
+        <Parent guid="guidTSqlFormatterPackageCmdSet" id="TSqlFormatterMenuGroup" />
+        <Strings>
+          <ButtonText>Format T-SQL</ButtonText>
+          <ToolTipText>Format the current SQL query (Ctrl+K)</ToolTipText>
+        </Strings>
+      </Button>
+
+      <!-- Settings Command -->
+      <Button guid="guidTSqlFormatterPackageCmdSet" id="SettingsCommandId" priority="0x0200" type="Button">
+        <Parent guid="guidTSqlFormatterPackageCmdSet" id="TSqlFormatterMenuGroup" />
+        <Strings>
+          <ButtonText>T-SQL Formatter Settings...</ButtonText>
+          <ToolTipText>Open T-SQL Formatter Settings</ToolTipText>
+        </Strings>
+      </Button>
+    </Buttons>
+
+  </Commands>
+
+  <KeyBindings>
+    <!-- Ctrl+K for Format SQL -->
+    <KeyBinding guid="guidTSqlFormatterPackageCmdSet" id="FormatSqlCommandId" editor="guidVSStd97" key1="K" mod1="Control" />
+  </KeyBindings>
+
+  <Symbols>
+    <!-- Package GUID -->
+    <GuidSymbol name="guidTSqlFormatterPackage" value="{a1b2c3d4-e5f6-7890-abcd-ef1234567890}" />
+
+    <!-- Command Set GUID -->
+    <GuidSymbol name="guidTSqlFormatterPackageCmdSet" value="{b2c3d4e5-f6a7-8901-bcde-f12345678901}">
+      <IDSymbol name="TSqlFormatterMenuGroup" value="0x1020"/>
+      <IDSymbol name="FormatSqlCommandId" value="0x0100"/>
+      <IDSymbol name="SettingsCommandId" value="0x0101"/>
+    </GuidSymbol>
+
+  </Symbols>
+
+</CommandTable>
