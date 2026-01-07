@@ -18,7 +18,7 @@ namespace TSqlFormatter.Extension.ViewModels
         private string _selectedPreset = "Default";
         private string _previewInput = "select id, name, email from users u inner join orders o on u.id = o.user_id where u.status = 'active' and o.amount > 100";
         private string _previewOutput = "";
-        private string _shortcutKey = "Ctrl+K";
+        private string _shortcutKey = "Ctrl+Shift+K";
         private bool _applyToSelection = false;
 
         public SettingsViewModel()

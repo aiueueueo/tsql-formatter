@@ -19,7 +19,7 @@
         <Parent guid="guidTSqlFormatterPackageCmdSet" id="TSqlFormatterMenuGroup" />
         <Strings>
           <ButtonText>Format T-SQL</ButtonText>
-          <ToolTipText>Format the current SQL query (Ctrl+K)</ToolTipText>
+          <ToolTipText>Format the current SQL query (Ctrl+Shift+K)</ToolTipText>
         </Strings>
       </Button>
 
@@ -36,8 +36,8 @@
   </Commands>
 
   <KeyBindings>
-    <!-- Ctrl+K for Format SQL -->
-    <KeyBinding guid="guidTSqlFormatterPackageCmdSet" id="FormatSqlCommandId" editor="guidVSStd97" key1="K" mod1="Control" />
+    <!-- Ctrl+Shift+K for Format SQL -->
+    <KeyBinding guid="guidTSqlFormatterPackageCmdSet" id="FormatSqlCommandId" editor="guidVSStd97" key1="K" mod1="Control Shift" />
   </KeyBindings>
 
   <Symbols>
