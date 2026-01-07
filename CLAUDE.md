@@ -29,4 +29,4 @@ powershell -ExecutionPolicy Bypass -File scripts/install-ssms.ps1
 | `src/Core/Rules/FormattingVisitor.cs` | フォーマットルール実装 |
 | `src/Plugin/TSqlFormatterPackage.cs` | SSMSプラグイン |
 | `docs/TODO.md` | 開発タスク一覧 |
-| `docs/SPECIFICATION.md` | 詳細設計仕様書 |
+| `docs/SPECIFICATION.md` | 詳細設計仕様書（フォーマットルール、アーキテクチャ等） |
