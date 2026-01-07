@@ -86,6 +86,14 @@ namespace TSqlFormatter.Core.Rules
 
             // Visit the query expression
             node.QueryExpression?.Accept(this);
+
+            // ORDER BY clause (on QueryExpression)
+            if (node.QueryExpression?.OrderByClause != null)
+            {
+                AppendNewLine();
+                AppendIndent();
+                node.QueryExpression.OrderByClause.Accept(this);
+            }
         }
 
         public override void ExplicitVisit(QuerySpecification node)

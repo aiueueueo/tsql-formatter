@@ -40,7 +40,7 @@
   - [x] インデント（タブ）ルール
   - [x] カンマ行頭配置ルール
   - [x] 句ごと改行ルール（SELECT, FROM, WHERE等）
-  - [ ] ORDER BY句のフォーマット処理（FormattingVisitorで未実装）
+  - [x] ORDER BY句のフォーマット処理
   - [x] JOIN句独立行ルール
   - [x] ON句インデントルール
   - [x] サブクエリインデントルール
