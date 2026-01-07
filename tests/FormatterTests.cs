@@ -481,5 +481,119 @@ namespace TSqlFormatter.Tests
         }
 
         #endregion
+
+        #region ORDER BY Tests
+
+        [Fact]
+        public void Format_SimpleOrderBy_FormatsCorrectly()
+        {
+            // Arrange
+            var formatter = new Formatter();
+            var input = "select id, name from users order by name";
+
+            // Act
+            var result = formatter.Format(input);
+
+            // Assert
+            Assert.Contains("ORDER BY", result);
+            Assert.Contains("name", result);
+        }
+
+        [Fact]
+        public void Format_OrderByDesc_FormatsCorrectly()
+        {
+            // Arrange
+            var formatter = new Formatter();
+            var input = "select id, name from users order by name desc";
+
+            // Act
+            var result = formatter.Format(input);
+
+            // Assert
+            Assert.Contains("ORDER BY", result);
+            Assert.Contains("DESC", result);
+        }
+
+        [Fact]
+        public void Format_OrderByAsc_FormatsCorrectly()
+        {
+            // Arrange
+            var formatter = new Formatter();
+            var input = "select id, name from users order by name asc";
+
+            // Act
+            var result = formatter.Format(input);
+
+            // Assert
+            Assert.Contains("ORDER BY", result);
+            Assert.Contains("ASC", result);
+        }
+
+        [Fact]
+        public void Format_OrderByMultipleColumns_FormatsCorrectly()
+        {
+            // Arrange
+            var formatter = new Formatter();
+            var input = "select id, name from users order by name desc, id asc";
+
+            // Act
+            var result = formatter.Format(input);
+
+            // Assert
+            Assert.Contains("ORDER BY", result);
+            Assert.Contains("DESC", result);
+            Assert.Contains("ASC", result);
+        }
+
+        [Fact]
+        public void Format_OrderByWithJoin_FormatsCorrectly()
+        {
+            // Arrange
+            var formatter = new Formatter();
+            var input = "select u.id, u.name from users u inner join orders o on u.id = o.user_id order by u.name";
+
+            // Act
+            var result = formatter.Format(input);
+
+            // Assert
+            Assert.Contains("ORDER BY", result);
+            Assert.Contains("INNER JOIN", result);
+        }
+
+        [Fact]
+        public void Format_OrderByWithoutSortOrder_DoesNotAddAsc()
+        {
+            // Arrange
+            var formatter = new Formatter();
+            var input = "select id from users order by name";
+
+            // Act
+            var result = formatter.Format(input);
+
+            // Assert
+            Assert.Contains("ORDER BY", result);
+            // ASC should not be added when not explicitly specified
+            Assert.DoesNotContain("ASC", result);
+            Assert.DoesNotContain("DESC", result);
+        }
+
+        [Fact]
+        public void Format_OrderByOnNewLine_FormatsCorrectly()
+        {
+            // Arrange
+            var formatter = new Formatter();
+            var input = "select id from users order by name";
+
+            // Act
+            var result = formatter.Format(input);
+
+            // Assert
+            // ORDER BY should be on its own line
+            var lines = result.Split('\n');
+            Assert.True(lines.Length > 1);
+            Assert.Contains(lines, line => line.Trim().StartsWith("ORDER BY"));
+        }
+
+        #endregion
     }
 }

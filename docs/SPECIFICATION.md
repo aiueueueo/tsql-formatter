@@ -28,7 +28,7 @@ SSMS 22用のT-SQLフォーマッタープラグイン
 | インデント | タブ |
 | キーワード | 大文字（SELECT, FROM, WHERE等） |
 | カンマ位置 | 行頭 |
-| 改行 | 各句ごと（SELECT, FROM, WHERE, JOIN等） |
+| 改行 | 各句ごと（SELECT, FROM, WHERE, JOIN, ORDER BY等） |
 | 演算子周りのスペース | あり（`=`, `<>`, `AND`, `OR`等） |
 | 括弧内スペース | なし `ISNULL(column, 0)` |
 | ASキーワード | 強制（エイリアスには必ずASを付ける） |
@@ -42,6 +42,11 @@ SSMS 22用のT-SQLフォーマッタープラグイン
 ### サブクエリ
 
 - サブクエリ内はインデントを深くする
+
+### ORDER BY句
+
+- 独立した行に配置
+- ASC/DESCは省略可能（ASCはデフォルト）
 
 ### CASE文
 
