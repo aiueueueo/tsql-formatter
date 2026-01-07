@@ -89,8 +89,5 @@ publish/
 # macOS
 .DS_Store
 
-# ローカル設定フォルダ
-%APPDATA%/T-SQL Formatter/
-
-# ローカルドキュメント
-docs/
+# ローカルドキュメント（個人用メモなど）
+docs/local/
