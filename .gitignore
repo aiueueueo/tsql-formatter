@@ -91,3 +91,6 @@ publish/
 
 # ローカルドキュメント（個人用メモなど）
 docs/local/
+
+# Claude Code ローカル設定
+.claude/settings.local.json
