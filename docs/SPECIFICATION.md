@@ -1,6 +1,6 @@
 # T-SQL Formatter 設計仕様書
 
-SSMS 22用のT-SQLクエリフォーマットプラグイン
+SSMS 22用のT-SQLフォーマッタープラグイン
 
 ## プロジェクト概要
 
@@ -74,14 +74,14 @@ select id,name,created_at from users u inner join orders o on u.id=o.user_id whe
 
 ```sql
 SELECT
-	u.id
-	, u.name
-	, u.created_at
+    u.id
+    , u.name
+    , u.created_at
 FROM users AS u
 INNER JOIN orders AS o
-	ON u.id = o.user_id
+    ON u.id = o.user_id
 WHERE u.status = 'active'
-	AND o.amount > 100
+    AND o.amount > 100
 ```
 
 ## 機能仕様
@@ -142,7 +142,7 @@ WHERE u.status = 'active'
 
 ## アーキテクチャ
 
-```
+```text
 T-SQL Formatter/
 ├── src/
 │   ├── Core/              # フォーマットロジック
