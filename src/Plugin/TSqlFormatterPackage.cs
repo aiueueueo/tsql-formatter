@@ -118,7 +118,7 @@ namespace TSqlFormatter.Extension
                     Type.Missing,
                     true);
                 formatButton.Caption = "Format T-SQL";
-                formatButton.TooltipText = "Format the current SQL query (Ctrl+K)";
+                formatButton.TooltipText = "Format the current SQL query";
                 formatButton.Click += FormatButton_Click;
 
                 // Add Settings command
