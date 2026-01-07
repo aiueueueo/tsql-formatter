@@ -141,6 +141,7 @@ namespace TSqlFormatter.Core.Rules
             if (node.FromClause != null)
             {
                 AppendNewLine();
+                AppendIndent();
                 node.FromClause.Accept(this);
             }
 
@@ -148,6 +149,7 @@ namespace TSqlFormatter.Core.Rules
             if (node.WhereClause != null)
             {
                 AppendNewLine();
+                AppendIndent();
                 node.WhereClause.Accept(this);
             }
 
@@ -155,6 +157,7 @@ namespace TSqlFormatter.Core.Rules
             if (node.GroupByClause != null)
             {
                 AppendNewLine();
+                AppendIndent();
                 node.GroupByClause.Accept(this);
             }
 
@@ -162,6 +165,7 @@ namespace TSqlFormatter.Core.Rules
             if (node.HavingClause != null)
             {
                 AppendNewLine();
+                AppendIndent();
                 node.HavingClause.Accept(this);
             }
         }
@@ -467,14 +471,15 @@ namespace TSqlFormatter.Core.Rules
             }
             AppendKeyword("IN");
             AppendSpace();
-            _output.Append('(');
 
             if (node.Subquery != null)
             {
+                // ScalarSubquery already handles its own parentheses
                 node.Subquery.Accept(this);
             }
             else
             {
+                _output.Append('(');
                 for (int i = 0; i < node.Values.Count; i++)
                 {
                     if (i > 0)
@@ -484,9 +489,8 @@ namespace TSqlFormatter.Core.Rules
                     }
                     node.Values[i].Accept(this);
                 }
+                _output.Append(')');
             }
-
-            _output.Append(')');
         }
 
         public override void ExplicitVisit(LikePredicate node)
