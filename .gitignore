@@ -1,4 +1,4 @@
-# Build results
+# ビルド結果
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
@@ -14,35 +14,24 @@ bld/
 [Ll]og/
 [Ll]ogs/
 
-# Visual Studio files
+# Visual Studio ファイル
 .vs/
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
 
-# Visual Studio cache/options directory
-.vs/
-
-# MSTest test Results
+# MSTest テスト結果
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
 
-# NuGet Packages
+# NuGet パッケージ
 *.nupkg
 *.snupkg
 **/[Pp]ackages/*
 !**/[Pp]ackages/build/
 
-# NuGet Symbol Packages
-*.snupkg
-
-# Nuget v3+ cache and lock file
-project.lock.json
-project.fragment.lock.json
-artifacts/
-
-# .NET Core
+# NuGet v3+ キャッシュとロックファイル
 project.lock.json
 project.fragment.lock.json
 artifacts/
@@ -50,23 +39,19 @@ artifacts/
 # Rider
 .idea/
 
-# User-specific files
+# ユーザー固有ファイル
 *.rsuser
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
 
-# Mono Auto Generated Files
+# Mono 自動生成ファイル
 mono_crash.*
 
-# Windows Installer files
+# Windows インストーラーファイル
 *.cab
 *.msi
 *.msm
 *.msp
 
-# Windows Shortcuts
+# Windows ショートカット
 *.lnk
 
 # JetBrains Rider
@@ -75,12 +60,12 @@ mono_crash.*
 # VS Code
 .vscode/
 
-# Resharper
+# ReSharper
 _ReSharper*/
 *.[Rr]e[Ss]harper
 *.DotSettings.user
 
-# Code Coverage
+# コードカバレッジ
 *.coverage
 *.coveragexml
 
@@ -89,23 +74,20 @@ _NCrunch_*
 .*crunch*.local.xml
 nCrunchTemp_*
 
-# Visual Studio profiler
+# Visual Studio プロファイラー
 *.psess
 *.vsp
 *.vspx
 *.sap
 
-# VSIX deployment
+# VSIX デプロイ
 *.vsix
 
-# Publish output
+# 発行出力
 publish/
 
 # macOS
 .DS_Store
 
-# Local settings (keep structure, ignore content)
-# !.sqlformatter.json - Include for team sharing
-
-# Personal settings folder (if exists locally)
-%APPDATA%/T-SQL Formatter/
+# ローカルドキュメント（個人用メモなど）
+docs/local/
